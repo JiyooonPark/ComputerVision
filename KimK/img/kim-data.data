@@ -1,0 +1,5 @@
+classes = 1
+train = /home/jypark/Desktop/KimK/img/train.txt
+valid = /home/jypark/Desktop/KimK/img/test.txt
+names = /home/jypark/Desktop/KimK/img/classes.names
+backup = backup
