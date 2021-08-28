@@ -67,7 +67,7 @@ p = []
 # Using os.walk for going through all directories
 # and files in them from the current directory
 # Fullstop in os.walk('.') means the current directory
-for current_dir, dirs, files in os.walk('.'):
+for current_dir, dirs, files in os.walk(''):
     # Going through all files
     for f in files:
         # Checking if filename ends with '.jpeg'
