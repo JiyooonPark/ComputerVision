@@ -8,7 +8,7 @@ def main():
     pTime = 0
     cTime = 0
     cap = cv2.VideoCapture(0)
-    detector = htm.handDetector()
+    detector = htm.handDetector(detectionCon=0.7)
     while True:
         # read video
         success, img = cap.read()

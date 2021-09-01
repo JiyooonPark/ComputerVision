@@ -26,21 +26,22 @@ class FaceMeshDetector:
                 for id, lm in enumerate(faceLms.landmark):
                     ih, iw, ic = img.shape
                     x, y = int(lm.x * iw), int(lm.y * ih)
-                    cv2.putText(img, str(id), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 100, 100), 1)
+                    # cv2.putText(img, str(id), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 100, 100), 1)
                     face.append([x, y])
                 faces.append(face)
         return img, faces
 
 if __name__=='__main__':
-    cap = cv2.VideoCapture('../video/mamamoo.mp4')
+    # cap = cv2.VideoCapture('../video/2.mp4')
+    cap = cv2.VideoCapture(0)
     pTime = 0
     while True:
         success, img = cap.read()
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         detector = FaceMeshDetector(num_faces=4)
-        img, faces = detector.findFaceMesh(img, draw=False)
-        if len(faces) != 0:
-            print(faces[0])
+        img, faces = detector.findFaceMesh(img, draw=True)
+        # if len(faces) != 0:
+        #     print(faces[0])
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)
