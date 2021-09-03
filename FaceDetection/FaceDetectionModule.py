@@ -8,7 +8,7 @@ class FaceDetection:
         self.model_selection = model_selection
 
         self.mpFaceDetection = mp.solutions.face_detection
-        self.mpDraw = mp.solutions.drawing_utils
+        self.mp_draw = mp.solutions.drawing_utils
         self.faceDetection = self.mpFaceDetection.FaceDetection(self.detectionConf, self.model_selection)
 
     def findFace(self, img, draw=True):
@@ -23,12 +23,12 @@ class FaceDetection:
                 bboxs.append([bbox, detection.score])
                 if draw:
                     # self.mpDraw.draw_detection(img, detection)
-                    img = self.fancyDraw(img, bbox)
+                    img = self.fancy_draw(img, bbox)
                     cv2.putText(img, f"{int(detection.score[0]*100)}%", (bbox[0], bbox[1]-1), cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 100), 2)
 
         return img, bboxs
 
-    def fancyDraw(self, img, bbox, l=30, t=10, rt = 1):
+    def fancy_draw(self, img, bbox, l=30, t=10, rt = 1):
         x, y, w, h = bbox
         x1, y1 = x+w, y+h
 
@@ -52,7 +52,7 @@ class FaceDetection:
 
 if __name__=='__main__':
 
-    cap = cv2.VideoCapture('videos/2.mp4')
+    cap = cv2.VideoCapture('../video/2.mp4')
     pTime = 0
     while True:
         success, img = cap.read()
