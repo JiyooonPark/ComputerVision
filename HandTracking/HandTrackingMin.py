@@ -5,9 +5,9 @@ import time
 cap = cv2.VideoCapture(0)
 
 # mp related
-mpHands = mp.solutions.hands
-hands = mpHands.Hands()
-mpDraw = mp.solutions.drawing_utils
+mp_hands = mp.solutions.hands
+hands = mp_hands.Hands()
+mp_draw = mp.solutions.drawing_utils
 
 # to calculate fps
 pTime = 0
@@ -24,8 +24,8 @@ while True:
 
     # if there are hands
     if results.multi_hand_landmarks:
-        for handLms in results.multi_hand_landmarks:
-            for id, lm in enumerate(handLms.landmark):
+        for hand_lms in results.multi_hand_landmarks:
+            for id, lm in enumerate(hand_lms.landmark):
                 # print(id, lm)
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
@@ -33,7 +33,7 @@ while True:
                 if id == 4:
                     cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
             # draw point on hands
-            mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
+            mp_draw.draw_landmarks(img, hand_lms, mp_hands.HAND_CONNECTIONS)
     cTime = time.time()
     fps = 1/(cTime-pTime)
     pTime = cTime
